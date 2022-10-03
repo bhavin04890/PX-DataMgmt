@@ -4,3 +4,7 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo cp /tmp/eksctl /usr/local/bin
 
 eksctl utils write-kubeconfig --cluster demo-px-day -r us-west-2
+
+sleep 10 
+
+kubectl get nodes
