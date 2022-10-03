@@ -7,8 +7,8 @@ metadata:
 managedNodeGroups:
   - name: storage-nodes
     instanceType: m5.xlarge
-    minSize: 5
-    maxSize: 5
+    minSize: 4
+    maxSize: 4
     volumeSize: 50
     amiFamily: AmazonLinux2
     labels: {role: worker, "portworx.io/node-type": "storage"}
@@ -29,4 +29,4 @@ managedNodeGroups:
         efs: true
         albIngress: true
         cloudWatch: true
-availabilityZones: [ 'us-west-2a', 'us-west-2b', 'us-west-2c' ]
+availabilityZones: [ 'us-west-2a', 'us-west-2b', 'us-west-2c', 'us-west-2d' ]
