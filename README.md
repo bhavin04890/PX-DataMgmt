@@ -1,2 +1,2 @@
 # PX-DataMgmt
-Repository for PX Data Management Immersion Day
+Repository for Portworx Data Management Immersion Day
