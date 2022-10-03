@@ -20,7 +20,7 @@ managedNodeGroups:
         - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
         - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
         - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
-        - arn:aws:iam::649513742363:policy/pxec2node
+        - <<arn-pxec2node-iam-policy>>
       withAddonPolicies:
         imageBuilder: true
         autoScaler: true
