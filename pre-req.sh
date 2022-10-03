@@ -18,7 +18,13 @@ if [ ! -f ~/usr/local/bin/kubectl ]; then
 	kubectl version --client
 fi
 
-echo "Step 3: Deploying EKS cluster. This might take close to 20 minutes"
+echo "Step 3: Installing Helm"
+yum install openssl -y
+sleep 5
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+sleep 10
+
+echo "Step 4: Deploying EKS cluster. This might take close to 20 minutes"
 eksctl create cluster -f create-eks-cluster.yaml
 
 kubectl get nodes 
