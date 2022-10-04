@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+   name: wp-mysql-pvc
+   annotations:
+     volume.beta.kubernetes.io/storage-class: block-sc
+spec:
+   accessModes:
+     - ReadWriteOnce
+resources:
+     requests:
+       storage: 10Gi
