@@ -1,13 +1,13 @@
 #!/bin/sh
 
-kubectl apply -f autopilot.yaml
+kubectl create -f autopilot.yaml
 sleep 30 
 
-kubectl apply -f autopilotrule.yaml
+kubectl create -f autopilotrule.yaml
 sleep 10
-kubectl apply -f namespaces.yaml
+kubectl create -f namespaces.yaml
 sleep 5
-kubectl apply -f autopilot-postgres.yaml -n pg1
+kubectl create -f autopilot-postgres.yaml -n pg1
 sleep 10
-kubectl apply -f autopilot-app.yaml -n pg1
+kubectl create -f autopilot-app.yaml -n pg1
 sleep 10
