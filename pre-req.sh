@@ -19,9 +19,9 @@ if [ ! -f ~/usr/local/bin/kubectl ]; then
 fi
 
 echo "Step 3: Installing Helm"
-yum install openssl -y
+sudo yum install openssl -y
 sleep 5
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+sudo curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 sleep 10
 
 echo "Step 4: Deploying EKS cluster. This might take close to 20 minutes"

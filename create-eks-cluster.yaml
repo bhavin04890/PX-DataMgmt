@@ -1,7 +1,7 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: demo-px-day-bshah
+  name: demo-px-day
   region: us-west-2
   version: "1.21"
 managedNodeGroups:
