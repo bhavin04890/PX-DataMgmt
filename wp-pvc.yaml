@@ -1,12 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-   name: wp-pvc
-   annotations:
-     volume.beta.kubernetes.io/storage-class: file-sc
+  name: wp-pvc
 spec:
-   accessModes:
-     - ReadWriteMany
-   resources:
-     requests:
-       storage: 10Gi
+  storageClassName: file-sc
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
