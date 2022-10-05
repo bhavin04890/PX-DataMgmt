@@ -5,35 +5,39 @@ metadata:
   labels:
     app: wordpress
 spec:
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
-  replicas: 3
   selector:
     matchLabels:
       app: wordpress
+  replicas: 3
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
+        tier: frontend
     spec:
+      # Use the Stork scheduler to enable more efficient placement of the pods
+      schedulerName: stork
       containers:
-      - image: wordpress:latest
+      - image: wordpress:4.8-apache
         name: wordpress
+        imagePullPolicy:
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql
+          value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
-          value: password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password.txt
         ports:
         - containerPort: 80
           name: wordpress
         volumeMounts:
-        - name: wp-data
+        - name: wordpress-persistent-storage
           mountPath: /var/www/html
       volumes:
-      - name: wp-data
+      - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pvc

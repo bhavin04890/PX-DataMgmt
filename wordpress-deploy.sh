@@ -3,6 +3,9 @@
 kubectl create ns wordpress
 sleep 10
 
+kubectl create secret generic mysql-pass --from-file=./password.txt -n wordpress
+sleep 10
+
 kubectl apply -f wp-mysql-pvc.yaml -n wordpress
 sleep 10
 

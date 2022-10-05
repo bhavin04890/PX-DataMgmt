@@ -7,7 +7,7 @@ kubectl apply -f postgres-db.yaml -n demo
 sleep 30 
 
 kubectl apply -f k8s-webapp.yaml -n demo
-sleep 10
+sleep 60
 
 echo "Application Endpoint:"
 kubectl get svc -n demo 
