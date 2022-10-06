@@ -14,10 +14,31 @@ if [ ! -f ~/usr/local/bin/kubectl ]; then
 	export PATH=$PATH:/usr/local/bin/
 fi
 
-echo "Deleting the destination cluster"
+echo "Deleting the demo applications"
 
 eksctl utils write-kubeconfig --cluster demo-px-day -r us-west-2
 sleep 5
+
+kubectl delete pods 
+kubectl delete pvc 
+sleep 5 
+
+kubectl delete deploy --all -n demo
+kubectl delete svc --all -n demo
+kubectl delete pvc --all -n demo 
+kubectl delete ns demo
+sleep 5
+
+helm uninstall jenkins -n jenkins
+kubectl delete pvc --all -n jenkins 
+kubectl delete ns jenkins
+sleep 5 
+
+kubectl delete deploy pgbench -n pg1
+kubectl delete pvc --all -n pg1 
+kubectl delete ns pg1 
+sleep 5
+
 kubectl delete stc --all -n kube-system
 sleep 60
 eksctl delete cluster -f create-eks-cluster.yaml
